@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+target/
+data/
+.env
+.DS_Store
+
+# 과제 안내 원본 (제출 불필요)
+docs/assignment/
