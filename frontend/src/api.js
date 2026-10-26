@@ -38,7 +38,7 @@ export async function login(email, password) {
   return data.user;
 }
 export function canEdit(post) {
-  if(session.user ?.id !==post.authorId){
+  if(session.user?.id !== post.authorId){
     return false;
   }
   return true;

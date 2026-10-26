@@ -10,8 +10,7 @@ const ISSUER = process.env.JWT_ISSUER || "webservice-class";
 const AUDIENCE = process.env.JWT_AUDIENCE || "board-api"; 
 const TTL = Number(process.env.TOKEN_TTL || 90);
 export function issueToken(user) {
-  return jwt.sign({}, new_key, {algorithm: "HS256", subject: String(user.id), issuer: ISSUER, audience: AUDIENCE, expiresIn: TTL})
-
+  return jwt.sign({}, new_key, {algorithm: "HS256", subject: String(user.id), issuer: ISSUER, audience: AUDIENCE, expiresIn: TTL});
 }
 export function currentUserId(req) {
   const header = req.headers.authorization;
@@ -28,7 +27,7 @@ export function currentUserId(req) {
   try {
     payload = jwt.verify(token, new_key, {algorithms: ["HS256"], issuer: ISSUER, audience: AUDIENCE});
   } catch (e) {
-    if(e.name == "TokenExpiredError") {
+    if(e.name === "TokenExpiredError") {
       throw new ApiError(401, "TOKEN_EXPIRED", "로그인 시간 만료");
     }
     else {
